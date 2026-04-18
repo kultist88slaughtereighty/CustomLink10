@@ -975,6 +975,23 @@ spawnAllButton.MouseButton1Click:Connect(function()
                 )
                 :Play()
         end
+    end)
+end)
+
+local function loadInMainFrame()
+    local tweenInfo =
+        TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+    local sizeGoal = { Size = UDim2.new(0, 300, 0, 210) }
+    local transparencyGoal = { BackgroundTransparency = 0 }
+
+    local sizeTween = TweenService:Create(mainFrame, tweenInfo, sizeGoal)
+    local transparencyTween =
+        TweenService:Create(mainFrame, tweenInfo, transparencyGoal)
+
+    sizeTween:Play()
+    transparencyTween:Play()
+end
+
 loadInMainFrame()
 
 local dragging, dragStart, startPos
