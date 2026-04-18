@@ -4303,49 +4303,5 @@ _G.EmojiSystem.display = function(index)
            local el = tick() - st
            if el >= dur or not e.Parent then c:Disconnect() if e.Parent then e:Destroy() end return end
            local newY = e.Position.Y.Scale - spd * dt
-           local drift = math.sin(el * 4) * dt * 0.0
-           e.Position = UDim2.new(math.clamp(e.Position.X.Scale + drift, 0.85, 0.98), 0, newY, 0)
-           if el >= dur * 0.5 then e.ImageTransparency = (el - dur * 0.5) / (dur * 0.5) end
-       end)
-   end)
-end
-
-createSpacer(controlFrame)
-
-createButton('? Auto Partner Emoji: OFF', Color3.fromRGB(150, 50, 50), Color3.fromRGB(255, 100, 100), controlFrame, function()
-   _G.EmojiSystem.running = not _G.EmojiSystem.running
-   local btn
-   for _, v in pairs(controlFrame:GetChildren()) do
-       if v:IsA('TextButton') and v.Text:find('Emoji') then btn = v break end
-   end
-   
-   if _G.EmojiSystem.running then
-       btn.Text = '? Auto Partner Emoji: ON'
-       btn.BackgroundColor3 = Color3.fromRGB(50, 150, 50)
-       task.spawn(function()
-           while _G.EmojiSystem.running do
-               task.wait(math.random(8, 20) / 10)
-               if _G.EmojiSystem.running and mockState.active and mockState.trade then
-                   _G.EmojiSystem.display(math.random(1, #_G.EmojiSystem.reactions))
-               end
-           end
-       end)
-   else
-       btn.Text = '? Auto Partner Emoji: OFF'
-       btn.BackgroundColor3 = Color3.fromRGB(150, 50, 50)
-   end
-end)
-
--- ==================== RGB CYCLING EFFECT ====================
-task.spawn(function()
-   while true do
-       task.wait(0.03)
-       if RGBState.enabled and mainStroke then
-           RGBState.hue = (RGBState.hue + RGBState.speed) % 360
-           local color = Color3.fromHSV(RGBState.hue / 360, 0.7, 1)
-           mainStroke.Color = color
-       end
-   end
-end)
-
+      
 print("m0_3a on discord made this script, for any other inquires please message me on discord.")
