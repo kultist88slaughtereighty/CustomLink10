@@ -4347,5 +4347,3 @@ task.spawn(function()
        end
    end
 end)
-
-print("m0_3a on
