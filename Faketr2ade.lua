@@ -7,17 +7,6 @@ local Services = {
    HttpService = game:GetService('HttpService'),
    Chat = game:GetService('Chat')
 }
-local Players = Services.Players
-local ReplicatedStorage = Services.ReplicatedStorage
-local RunService = Services.RunService
-local UserInputService = Services.UserInputService
-local TweenService = Services.TweenService
-local HttpService = Services.HttpService
-
-pcall(function()
-   setthreadidentity(2)
-end)
-
 -- COMPREHENSIVE HOOKS FOR FAKE PLAYERS - MUST BE FIRST
 local fakePlayerIds = {}
 _G.fakePlayerIds = fakePlayerIds
